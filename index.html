@@ -26,6 +26,16 @@
   </div>
 
   <!-- GoPay -->
+  <button class="payment-btn" onclick="toggleNomor('gopay')">GoPay</button>
+  <div id="gopay" style="display:none;">
+    <div class="nomor">
+      Nomor GoPay: <span id="nomorGopay">082175639231</span>
+      <button class="copy-btn" onclick="salinNomor('nomorGopay','notifGopay')">Copy</button>
+    </div>
+    <p id="notifGopay" class="notif">Nomor GoPay disalin!</p>
+  </div>
+  
+  <!-- Shopee -->
   <button class="payment-btn" onclick="toggleNomor('shopee')">Shopee</button>
   <div id="gopay" style="display:none;">
     <div class="nomor">
