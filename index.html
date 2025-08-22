@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Loce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Foto Lingkaran -->
+  <div class="foto-lingkaran">
+    <img src="logo.jpg" alt="Foto Kamu">
+  </div>
+  
+  <h1>Payment Loce</h1>
+
+  <!-- Dana -->
+  <button class="payment-btn" onclick="toggleNomor('dana')">Dana</button>
+  <div id="dana" style="display:none;">
+    <div class="nomor">
+      Nomor Dana: <span id="nomorDana">082175639231</span>
+      <button class="copy-btn" onclick="salinNomor('nomorDana','notifDana')">Copy</button>
+    </div>
+    <p id="notifDana" class="notif">Nomor Dana disalin!</p>
+  </div>
+
+  <!-- GoPay -->
+  <button class="payment-btn" onclick="toggleNomor('gopay')">GoPay</button>
+  <div id="gopay" style="display:none;">
+    <div class="nomor">
+      Nomor GoPay: <span id="nomorGopay">082175639231</span>
+      <button class="copy-btn" onclick="salinNomor('nomorGopay','notifGopay')">Copy</button>
+    </div>
+    <p id="notifGopay" class="notif">Nomor GoPay disalin!</p>
+  </div>
+
+  <!-- QRIS -->
+  <button class="payment-btn" onclick="showQris()">Tampilkan QRIS</button>
+  <div class="qris-overlay" id="qrisOverlay">
+    <div class="qris-box">
+      <span class="close-btn" onclick="hideQris()">✖</span>
+      <img src="qris.png" class="qris-img" alt="QRIS">
+    </div>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player">
+    <img src="logo-music.png" class="music-logo" alt="Music Logo">
+    <span id="namaMusik">🎶 Judul Musik</span>
+    <audio controls autoplay loop>
+      <source src="music.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutar musik.
+    </audio>
+  </div>
+
+  <script>
+    function toggleNomor(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === "none") ? "block" : "none";
+    }
+    function salinNomor(spanId, notifId) {
+      const nomor = document.getElementById(spanId).innerText;
+      navigator.clipboard.writeText(nomor).then(() => {
+        const notif = document.getElementById(notifId);
+        notif.style.display = "block";
+        setTimeout(() => {
+          notif.style.display = "none";
+        }, 2000);
+      });
+    }
+    function showQris() {
+      document.getElementById("qrisOverlay").style.display = "flex";
+    }
+    function hideQris() {
+      document.getElementById("qrisOverlay").style.display = "none";
+    }
+  </script>
+</body>
+</html>
